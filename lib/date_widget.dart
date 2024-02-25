@@ -17,8 +17,9 @@ class DateWidget extends StatelessWidget {
   final DateSelectionCallback? onDateSelected;
   final String? locale;
   final BoxDecoration? decoration;
-
+  final bool showMonth;
   DateWidget({
+    this.showMonth = true,
     required this.date,
     this.decoration,
     required this.monthTextStyle,
@@ -47,13 +48,18 @@ class DateWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: showMonth?<Widget>[
               Text(new DateFormat("MMM", locale).format(date).toUpperCase(), // Month
                   style: monthTextStyle),
               Text(date.day.toString(), // Date
                   style: dateTextStyle),
               Text(new DateFormat("E", locale).format(date).toUpperCase(), // WeekDay
                   style: dayTextStyle)
+            ]:[
+              Text(new DateFormat("E", locale).format(date).toUpperCase(), // WeekDay
+                  style: dayTextStyle),
+              Text(date.day.toString(), // Date
+                  style: dateTextStyle),
             ],
           ),
         ),

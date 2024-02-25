@@ -56,7 +56,7 @@ class DatePicker extends StatefulWidget {
   /// Max limit up to which the dates are shown.
   /// Days are counted from the startDate
   final int daysCount;
-
+  final bool showMonth;
   /// Locale for the calendar default: en_us
   final String locale;
 
@@ -64,6 +64,7 @@ class DatePicker extends StatefulWidget {
     this.startDate, {
     Key? key,
     this.width = 60,
+    this.showMonth = true,
     this.height = 80,
     this.dateWidgetDecoration,
     this.controller,
@@ -174,6 +175,7 @@ class _DatePickerState extends State<DatePicker> {
           return DateWidget(
             date: date,
             decoration: widget.dateWidgetDecoration,
+            showMonth: widget.showMonth,
             monthTextStyle: isDeactivated
                 ? deactivatedMonthStyle
                 : isSelected
