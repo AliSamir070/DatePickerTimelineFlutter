@@ -11,7 +11,7 @@ class DatePicker extends StatefulWidget {
   /// Start Date in case user wants to show past dates
   /// If not provided calendar will start from the initialSelectedDate
   final DateTime startDate;
-
+  final BoxDecoration? dateWidgetDecoration;
   /// Width of the selector
   final double width;
 
@@ -65,6 +65,7 @@ class DatePicker extends StatefulWidget {
     Key? key,
     this.width = 60,
     this.height = 80,
+    this.dateWidgetDecoration,
     this.controller,
     this.monthTextStyle = defaultMonthTextStyle,
     this.dayTextStyle = defaultDayTextStyle,
@@ -172,6 +173,7 @@ class _DatePickerState extends State<DatePicker> {
           // Return the Date Widget
           return DateWidget(
             date: date,
+            decoration: widget.dateWidgetDecoration,
             monthTextStyle: isDeactivated
                 ? deactivatedMonthStyle
                 : isSelected

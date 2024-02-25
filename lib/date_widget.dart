@@ -16,9 +16,11 @@ class DateWidget extends StatelessWidget {
   final Color selectionColor;
   final DateSelectionCallback? onDateSelected;
   final String? locale;
+  final BoxDecoration? decoration;
 
   DateWidget({
     required this.date,
+    this.decoration,
     required this.monthTextStyle,
     required this.dayTextStyle,
     required this.dateTextStyle,
@@ -34,7 +36,9 @@ class DateWidget extends StatelessWidget {
       child: Container(
         width: width,
         margin: const EdgeInsets.all(3.0),
-        decoration: BoxDecoration(
+        decoration: decoration!=null
+            ?decoration
+            :BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)),
           color: selectionColor,
         ),
